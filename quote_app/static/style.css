@@ -1,0 +1,40 @@
+.message {
+    color: red;
+}
+.container{
+    margin: auto;
+    background-color: darkslategray;
+}
+.login_box{
+    background-color: rgb(127, 187, 187);
+    margin-top: 10px;
+    margin-left: 66px;
+    padding: 20px;
+    width: auto;
+}
+#form{
+    background-color: rgb(127, 187, 187);
+    margin-top: 10px;
+    margin-left: 66px;
+    padding: 20px;
+    width: auto;
+}
+.display_quotes{
+    background-color: rgb(127, 187, 187);
+    margin-top: 10px;
+    margin-left: 66px;
+    padding: 20px;
+    width: 500px;
+    overflow: scroll;
+    border-bottom: solid black 2px;
+}
+.edit_box{
+    display: flex;
+    justify-content: flex-end;
+}
+#user_page{
+    margin: auto;
+    padding: 50px;
+    background-color: cadetblue;
+    width: fit-content;
+}

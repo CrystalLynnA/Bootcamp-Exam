@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"> 
+</head>
+<body>
+    <h1>Quotes:</h1>
+    <h2>Hey {{user.first_name}} What is your favorite "Quote"?</h2>
+    <div class="display_quotes">
+        {% if display_quotes %}
+            {% for quote in display_quotes%}
+                <p> ON: {{quote.created_at}}:
+                <br>"{{quote.desc}}"  -{{quote.author}} 
+                </p>
+                <a href="/user_page/{{quote.user_quote.id}}">posted by {{quote.user_quote.first_name}} </a>
+                <br>
+                {% if quote.user_quote.id == request.session.userid %}
+                <div class="edit_box">
+                    <p><a href="/edit_page/{{quote.id}}">Edit</a>
+                    <br><a href="/delete_quote/{{quote.id}}">Delete</a>
+                    </p>
+                </div>
+                {% endif%}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="message"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form action="/add_quote" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name='user_quote'>
+            <p>Submit a Quote</p>
+            <p>Quoted by: <input type="text" name="author" id=""></p>
+            <p><textarea name="desc" cols="30" rows="10"></textarea></p>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <a href="/logout">Click here to log out.</a>
+
+</body>
+</html>

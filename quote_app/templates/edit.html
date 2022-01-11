@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="message"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %} 
+    <form action="/edit/{{quote.id}}" method="post">
+        {% csrf_token %}
+        <p>Quote by:</p>
+        <input name="author" placeholder="{{quote.author}}">
+        <p>Description</p>
+        <input name="desc" placeholder="{{quote.desc}}">
+        <button type="submit">Update</button>
+    </form>
+    <a href="/quotes">Cancel! Take me back to Quotes!</a>
+</body>
+</html>

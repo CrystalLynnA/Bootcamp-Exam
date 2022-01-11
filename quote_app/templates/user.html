@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"> 
+</head>
+<body>
+    <div id="user_page">
+    <h1> Posts by {{user.first_name}}: </h1>
+    <p>Number of Quotes: {{quotes.count}}</p>
+    {% for quote in quotes.all%}
+    <p>"{{quote.desc}}" - {{quote.author}}</p>
+    {% endfor %}
+    <a href="/quotes">Click here to return to quotes.</a>
+    </div>
+</body>
+</html>
